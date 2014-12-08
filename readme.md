@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-render-react
+# [gulp](http://gulpjs.com)-render-react [![Build Status](https://travis-ci.org/abramz/gulp-react-render.svg)](https://travis-ci.org/abramz/gulp-react-render)
 
 > Render React components to string or static markup
 
