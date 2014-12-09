@@ -25,12 +25,15 @@ module.exports = function (type, props) {
 
   return through.obj(function (file, enc, cb) {
     try {
+      // temporary before we allow src extension in options
       nodejsx.install({ extension: '.jsx' });
       if (type === 'string') {
         file.contents = renderToString(file.path, props);
       } else if (type === 'markup') {
         file.contents = renderToStaticMarkup(file.path, props);
       }
+      // temporary before we allow dest extension in options
+      file.path = gutil.replaceExtension(file.path, '.html');
       this.push(file);
     } catch (err) {
       this.emit('error', new gutil.PluginError('gulp-react-render', err, {fileName: file.path }));

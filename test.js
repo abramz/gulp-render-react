@@ -7,8 +7,10 @@ var render = require('./');
 it('should render valid React components to string', function (cb) {
   var stream = render('string');
   stream.on('data', function (file) {
-    var pattern = /<ul data-reactid=".*?" data-react-checksum=".*?"><li data-reactid=".*?"><span data-reactid=".*?">some<\/span><span data-reactid=".*?"> : <\/span><span data-reactid=".*?">prop<\/span><\/li><\/ul>/;
-    assert(pattern.test(file.contents.toString()));
+    var extensionPattern = /.*?\.html/;
+    var contentsPattern = /<ul data-reactid=".*?" data-react-checksum=".*?"><li data-reactid=".*?"><span data-reactid=".*?">some<\/span><span data-reactid=".*?"> : <\/span><span data-reactid=".*?">prop<\/span><\/li><\/ul>/;
+    assert(extensionPattern.test(file.path));
+    assert(contentsPattern.test(file.contents.toString()));
     cb();
   });
 
