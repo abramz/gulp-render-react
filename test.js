@@ -34,11 +34,9 @@ it('should render valid React components to static markup', function (cb) {
 
 it('should render provided props', function (cb) {
   var stream = render('markup', {
-    props: {
-      a: 'prop',
-      b: 'thing',
-      c: 'stuff'
-    }
+    a: 'prop',
+    b: 'thing',
+    c: 'stuff'
   });
   stream.on('data', function (file) {
     var pattern = /<ul><li>a : prop<\/li><li>b : thing<\/li><li>c : stuff<\/li><li>some : prop<\/li><\/ul>/;
