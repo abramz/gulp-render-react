@@ -17,7 +17,8 @@
   },
   "keywords": [
     "gulpplugin",
-    "react"
+    "react",
+    "prerender"
   ],
   "scripts": {
     "test": "./node_modules/.bin/mocha"

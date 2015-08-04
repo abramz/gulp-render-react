@@ -1,5 +1,6 @@
-# [gulp](http://gulpjs.com)-render-react [![Build Status](https://travis-ci.org/abramz/gulp-react-render.svg)](https://travis-ci.org/abramz/gulp-react-render)
-
+[![Build Status](https://travis-ci.org/abramz/gulp-react-render.svg)](https://travis-ci.org/abramz/gulp-react-render)
+[![Dependency Status](https://david-dm.org/abramz/gulp-react-render.svg)](https://david-dm.org/abramz/gulp-react-render)
+# [gulp](http://gulpjs.com)-render-react 
 > Render React components to string or static markup
 
 Will render React component with [React.renderToString](http://facebook.github.io/react/docs/top-level-api.html#react.rendertostring) or [React.renderToStaticMarkup](http://facebook.github.io/react/docs/top-level-api.html#react.rendertostaticmarkup)
