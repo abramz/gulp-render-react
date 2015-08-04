@@ -1,24 +1,35 @@
 {
   "name": "gulp-react-render",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Render react components to string or static markup",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
+  "author": {
+    "name": "Andrew Shapro",
+    "email": "me@andrewshapro.com",
+    "url": "http://github.com/abramz/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abramz/gulp-react-render.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abramz/gulp-react-render/issues"
   },
   "keywords": [
     "gulpplugin",
     "react"
   ],
-  "author": "Andrew Shapro",
-  "license": "MIT",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "main": "index.js",
   "dependencies": {
-    "gulp-util": "^3.0.1",
-    "node-jsx": "^0.12.4",
-    "react": "^0.12.1",
-    "through2": "^0.6.3"
+    "gulp-util": "^3.0.6",
+    "node-jsx": "^0.13.3",
+    "react": "^0.13.3",
+    "through2": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.0.1"
+    "mocha": "^2.2.5"
   }
 }
