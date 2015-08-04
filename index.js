@@ -20,7 +20,7 @@ module.exports = function (opts) {
 	opts = opts || {};
 
 	if (!opts.type || (opts.type !== 'string' && opts.type !== 'markup')) {
-		throw new gutil.PluginError('gulp-react-render', '`type` required (`string` or `markup`)');
+		throw new gutil.PluginError('gulp-render-react', '`type` required (`string` or `markup`)');
 		return;
 	}
 
@@ -37,7 +37,7 @@ module.exports = function (opts) {
 			file.path = gutil.replaceExtension(file.path, '.html');
 			this.push(file);
 		} catch (err) {
-			this.emit('error', new gutil.PluginError('gulp-react-render', err, {fileName: file.path }));
+			this.emit('error', new gutil.PluginError('gulp-render-react', err, {fileName: file.path }));
 		}
 		cb();
 	});

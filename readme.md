@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/abramz/gulp-react-render.svg)](https://travis-ci.org/abramz/gulp-react-render)
-[![Dependency Status](https://david-dm.org/abramz/gulp-react-render.svg)](https://david-dm.org/abramz/gulp-react-render)
+[![Build Status](https://travis-ci.org/abramz/gulp-render-react.svg)](https://travis-ci.org/abramz/gulp-render-react)
+[![Dependency Status](https://david-dm.org/abramz/gulp-render-react.svg)](https://david-dm.org/abramz/gulp-render-react)
 # [gulp](http://gulpjs.com)-render-react 
 > Render React components to string or static markup
 

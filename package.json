@@ -1,5 +1,5 @@
 {
-  "name": "gulp-react-render",
+  "name": "gulp-render-react",
   "version": "0.0.2",
   "description": "Render react components to string or static markup",
   "author": {
@@ -10,10 +10,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abramz/gulp-react-render.git"
+    "url": "git+https://github.com/abramz/gulp-render-react.git"
   },
   "bugs": {
-    "url": "https://github.com/abramz/gulp-react-render/issues"
+    "url": "https://github.com/abramz/gulp-render-react/issues"
   },
   "keywords": [
     "gulpplugin",
