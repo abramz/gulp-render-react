@@ -1,6 +1,6 @@
 {
   "name": "gulp-render-react",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Render react components to string or static markup",
   "author": {
     "name": "Andrew Shapro",
