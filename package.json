@@ -1,6 +1,6 @@
 {
   "name": "gulp-render-react",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Render react components to string or static markup",
   "author": {
     "name": "Andrew Shapro",
@@ -21,16 +21,32 @@
     "prerender"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "./node_modules/.bin/mocha --reporter spec --compilers js:babel/register",
+    "lint": "./node_modules/.bin/eslint --ext=jsx --ext=js src test",
+    "build": "./node_modules/.bin/babel src --out-dir lib"
   },
-  "main": "index.js",
+  "pre-commit": [
+  	"test",
+  	"lint",
+  	"build"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "dependencies": {
-    "gulp-util": "^3.0.6",
-    "node-jsx": "^0.13.3",
-    "react": "^0.13.3",
+    "babel": "^5.8.29",
+    "gulp-util": "^3.0.7",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
     "through2": "^2.0.0"
   },
   "devDependencies": {
-    "mocha": "^2.2.5"
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.7.3",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-react": "^3.6.3",
+    "mocha": "^2.3.3",
+    "pre-commit": "^1.1.2"
   }
 }

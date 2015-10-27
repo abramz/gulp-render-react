@@ -1,19 +1,22 @@
-var React = require('react');
+/*! React Starter Kit | MIT License */
 
-var validComponent = React.createClass({
-	getDefaultProps: function () {
+/*eslint-disable */
+import React from 'react';
+
+const validComponent = React.createClass({
+	getDefaultProps: () => {
 		return {};
 	},
-	render: function () {
-		var id = 0;
+	render: () => {
+		let id = 0;
 		return (
 			<InvalidTag>
-				{Object.keys(this.props).forEach(function (key) {
-					return (<li key={++id}>{prop.text}</li>);
+				{Object.keys(this.props).forEach((key) => {
+					return (<li key={id++}>{prop.text}</li>);
 				})}
 			</InvalidTag>
 		);
 	}
 });
 
-module.exports = validComponent;
+export default validComponent;

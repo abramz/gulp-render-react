@@ -3,7 +3,7 @@
 # [gulp](http://gulpjs.com)-render-react 
 > Render React components to string or static markup
 
-Will render React component with [React.renderToString](http://facebook.github.io/react/docs/top-level-api.html#react.rendertostring) or [React.renderToStaticMarkup](http://facebook.github.io/react/docs/top-level-api.html#react.rendertostaticmarkup)
+Will render React component with [ReactDOMServer.renderToString](https://facebook.github.io/react/docs/top-level-api.html#reactdomserver.rendertostring) or [ReactDOMServer.renderToStaticMarkup](https://facebook.github.io/react/docs/top-level-api.html#reactdomserver.rendertostaticmarkup)
 
 ## Install
 ```sh
@@ -19,16 +19,16 @@ var SRC = 'src/*.jsx';
 var DEST = 'dist';
 
 gulp.task('default', function () {
-  return gulp.src(SRC, { read: false })
-    .pipe(render({
-    	type: 'string',
-    	props: {
-	      some: 'default'
-	      props: 'to',
-	      pass: 'on'
-      }
-    }))
-    .pipe(gulp.dest(DEST));
+	return gulp.src(SRC, { read: false })
+		.pipe(render({
+			type: 'string',
+			props: {
+				some: 'default'
+				props: 'to',
+				pass: 'on'
+			}
+		}))
+		.pipe(gulp.dest(DEST));
 });
 ```
 ## API
@@ -36,8 +36,8 @@ gulp.task('default', function () {
 ### render(opts)
 
 * `type` is
-  * `string` for React.renderToString()
-  * `markup` for React.renderToStaticMarkup()
+	* `string` for ReactDOMServer.renderToString()
+	* `markup` for ReactDOMServer.renderToStaticMarkup()
 * `props` are the properties to create the component with
 
 ## License

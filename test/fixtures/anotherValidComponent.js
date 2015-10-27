@@ -1,22 +1,24 @@
-var React = require('react');
+/*! React Starter Kit | MIT License */
 
-var anotherValidComponent = React.createClass({
+import React from 'react';
+
+const anotherValidComponent = React.createClass({
 	displayName: 'anotherValidComponent',
-	getDefaultProps: function () {
+	getDefaultProps: function getDefaultProps() {
 		return {
-			some: 'prop'
+			some: 'prop',
 		};
 	},
-	render: function () {
-		var id = 0;
+	render: function render() {
+		let id = 0;
 		return (
-			React.createElement("ul", null,
-				Object.keys(this.props).map(function (key) {
-					return (React.createElement("li", {key: ++id}, key, " : ", this.props[key]));
+			React.createElement('ul', null,
+				Object.keys(this.props).map((key) => {
+					return (React.createElement('li', {key: id++}, key, ' : ', this.props[key]));
 				}, this)
 			)
 		);
-	}
+	},
 });
 
-module.exports = anotherValidComponent;
+export default anotherValidComponent;
