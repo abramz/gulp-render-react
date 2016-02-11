@@ -1,4 +1,4 @@
-/*! React Starter Kit | MIT License */
+/*! Gulp Render React | MIT License */
 
 import 'babel/polyfill';
 import gutil from 'gulp-util';
