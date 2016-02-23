@@ -1,5 +1,9 @@
 [![Build Status](https://travis-ci.org/abramz/gulp-render-react.svg)](https://travis-ci.org/abramz/gulp-render-react)
 [![Dependency Status](https://david-dm.org/abramz/gulp-render-react.svg)](https://david-dm.org/abramz/gulp-render-react)
+
+[![Code Climate](https://codeclimate.com/github/abramz/gulp-render-react/badges/gpa.svg)](https://codeclimate.com/github/abramz/gulp-render-react)
+[![Test Coverage](https://codeclimate.com/github/abramz/gulp-render-react/badges/coverage.svg)](https://codeclimate.com/github/abramz/gulp-render-react/coverage)
+
 # [gulp](http://gulpjs.com)-render-react 
 > Render React components to string or static markup
 
@@ -15,7 +19,7 @@ $ npm install --save-dev gulp-render-react
 var gulp = require('gulp');
 var render = require('gulp-render-react');
 
-var SRC = 'src/*.jsx';
+var SRC = 'src/*.js';
 var DEST = 'dist';
 
 gulp.task('default', function () {
@@ -39,6 +43,86 @@ gulp.task('default', function () {
   * `string` for ReactDOMServer.renderToString()
   * `markup` for ReactDOMServer.renderToStaticMarkup()
 * `props` are the properties to create the component with
+
+## Usage with [React Router](https://github.com/reactjs/react-router)
+### src/app.js
+```js
+import React, { Component, PropTypes } from 'react';
+import { createMemoryHistory, Router, Route, IndexRoute } from 'react-router';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <h1>App</h1>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+class Home extends Component {
+  render() {
+    return (
+      <h2>Home</h2>
+    );
+  }
+}
+
+class About extends Component {
+  render() {
+    return (
+      <h2>About</h2>
+    );
+  }
+}
+
+class MyRouter extends Component {
+  static propTypes = {
+    location: PropTypes.string,
+  };
+
+  static defaultProps = {
+    location: '/',
+  };
+
+  render() {
+    const history = createMemoryHistory(this.props.location);
+
+    return (
+      <Router history={history}>
+        <Route path="/" component={App}>
+          <IndexRoute component={Home} />
+          <Route path='home' component={Home} />
+          <Route path='about' component={About} />
+        </Route>
+      </Router>
+    );
+  }
+}
+
+export default MyRouter;
+```
+
+### Gulpfile.js
+```js
+var gulp = require('gulp');
+var render = require('gulp-render-react');
+
+var SRC = 'src/*.js';
+var DEST = 'dist';
+
+gulp.task('default', function () {
+  return gulp.src(SRC, { read: false })
+    .pipe(render({
+      type: 'string',
+      props: {
+        location: 'home'
+      }
+    }))
+    .pipe(gulp.dest(DEST));
+});
+```
 
 ## License
 
