@@ -1,8 +1,10 @@
 {
+  "env": {
+      "mocha": true
+  },
+  "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
-  	"indent": [2, "tab"],
-    "react/jsx-quotes": 0,
-    "jsx-quotes": [2, "prefer-double"]
+    "max-len": 0
   }
 }

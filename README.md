@@ -19,16 +19,16 @@ var SRC = 'src/*.jsx';
 var DEST = 'dist';
 
 gulp.task('default', function () {
-	return gulp.src(SRC, { read: false })
-		.pipe(render({
-			type: 'string',
-			props: {
-				some: 'default'
-				props: 'to',
-				pass: 'on'
-			}
-		}))
-		.pipe(gulp.dest(DEST));
+  return gulp.src(SRC, { read: false })
+    .pipe(render({
+      type: 'string',
+      props: {
+        some: 'default'
+        props: 'to',
+        pass: 'on'
+      }
+    }))
+    .pipe(gulp.dest(DEST));
 });
 ```
 ## API
@@ -36,8 +36,8 @@ gulp.task('default', function () {
 ### render(opts)
 
 * `type` is
-	* `string` for ReactDOMServer.renderToString()
-	* `markup` for ReactDOMServer.renderToStaticMarkup()
+  * `string` for ReactDOMServer.renderToString()
+  * `markup` for ReactDOMServer.renderToStaticMarkup()
 * `props` are the properties to create the component with
 
 ## License
