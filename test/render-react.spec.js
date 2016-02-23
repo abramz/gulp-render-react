@@ -86,12 +86,29 @@ describe('gulp-render-react', () => {
     done();
   });
 
+  it('should emit an error when no file is provided', (done) => {
+    const stream = render({
+      type: 'string',
+    });
+
+    stream.on('error', (error) => {
+      assert.equal(error.message, 'Expected filePath to be a string');
+      done();
+    });
+
+    stream.write(new gutil.File({
+      base: __dirname,
+      path: '',
+    }));
+  });
+
   it('should emit an error for invalid React components', (done) => {
     const stream = render({
       type: 'string',
     });
 
-    stream.on('error', () => {
+    stream.on('error', (error) => {
+      assert.equal(error.message, 'InvalidTag is not defined');
       done();
     });
 

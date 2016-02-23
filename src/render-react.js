@@ -6,37 +6,50 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 
 /**
- * Require a file containing a React component and render it to a string
- * using ReactDOMServer.renderToString
- * https://facebook.github.io/react/docs/top-level-api.html#reactdomserver.rendertostring
- *
- * @param  {String} filePath React component to render
- * @param  {Object} props    Properties to apply to the React component
- * @return {Buffer} buffer of the component rendered to a string
+ * Requires a file containing a React component and create an instance of it
+ * @param  {String} filePath file path to the React component to render
+ * @param  {Object} props    properties to apply to the element
+ * @return {Element}         the created React element
  */
-function renderToString(filePath, props) {
+function createElement(filePath, props) {
+  if (!filePath || typeof filePath !== 'string' || filePath.length === 0) {
+    throw new Error('Expected filePath to be a string');
+  }
+
   const component = require(filePath);
   const element = React.createElement(component.default || component, props || {});
-  const componentString = ReactDOMServer.renderToString(element);
 
-  return new Buffer(componentString);
+  return element;
 }
 
 /**
- * Require a file containing a React component and render it to a string
- * using ReactDOMServer.renderToStatic
+ * Uses ReactDOMServer.renderToString on a component at filePath. Will apply optional pro
+ * https://facebook.github.io/react/docs/top-level-api.html#reactdomserver.rendertostring
+ *
+ * @param  {String} filePath react component to render
+ * @param  {Object} props    properties to apply to the React component
+ * @return {Buffer}          buffer of the component rendered to a string
+ */
+function renderToString(filePath, props) {
+  const element = createElement(filePath, props);
+  const elementString = ReactDOMServer.renderToString(element);
+
+  return new Buffer(elementString);
+}
+
+/**
+ * Uses ReactDOMServer.renderToStatic on a component at filePath. Will apply optional props
  * https://facebook.github.io/react/docs/top-level-api.html#reactdomserver.rendertostaticmarkup
  *
- * @param  {String} filePath React component to render
- * @param  {Object} props    Properties to apply to the React component
- * @return {Buffer} buffer of the component rendered to a string
+ * @param  {String} filePath react component to render
+ * @param  {Object} props    properties to apply to the React component
+ * @return {Buffer}          buffer of the component rendered to a string
  */
 function renderToStaticMarkup(filePath, props) {
-  const component = require(filePath);
-  const element = React.createElement(component.default || component, props || {});
-  const componentMarkup = ReactDOMServer.renderToStaticMarkup(element);
+  const element = createElement(filePath, props);
+  const elementMarkup = ReactDOMServer.renderToStaticMarkup(element);
 
-  return new Buffer(componentMarkup);
+  return new Buffer(elementMarkup);
 }
 
 module.exports = (options) => {
@@ -46,7 +59,7 @@ module.exports = (options) => {
     throw new gutil.PluginError('gulp-render-react', '`type` required (`string` or `markup`)');
   }
 
-  return through.obj(function process(file, enc, cb) {
+  return through.obj(function process(file, enc, callback) {
     try {
       const newFile = file;
       // temporary before we allow src extension in options
@@ -61,6 +74,6 @@ module.exports = (options) => {
     } catch (err) {
       this.emit('error', new gutil.PluginError('gulp-render-react', err, { fileName: file.path }));
     }
-    cb();
+    callback();
   });
 };
