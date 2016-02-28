@@ -20,7 +20,7 @@
     "react",
     "prerender"
   ],
-  "main": "lib/index.js",
+  "main": "lib/render-react.js",
   "files": [
     "lib"
   ],
