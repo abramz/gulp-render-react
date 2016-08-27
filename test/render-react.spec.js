@@ -13,7 +13,7 @@ describe('gulp-render-react', () => {
 
     stream.on('data', (file) => {
       const extensionPattern = /.*?\.html/;
-      const contentsPattern = /<ul data-reactid=".*?" data-react-checksum=".*?"><li data-reactid=".*?"><span data-reactid=".*?">some<\/span><span data-reactid=".*?"> : <\/span><span data-reactid=".*?">prop<\/span><\/li><\/ul>/;
+      const contentsPattern = /<ul data-reactroot="" data-reactid="1" data-react-checksum="130956895"><li data-reactid="2"><!-- react-text: 3 -->some<!-- \/react-text --><!-- react-text: 4 --> : <!-- \/react-text --><!-- react-text: 5 -->prop<!-- \/react-text --><\/li><\/ul>/;
       assert(extensionPattern.test(file.path));
       assert(contentsPattern.test(file.contents.toString()));
       done();

@@ -16,7 +16,7 @@ function createElement(filePath, props) {
     throw new Error('Expected filePath to be a string');
   }
 
-  const component = require(filePath);
+  const component = require(filePath); // eslint-disable-line global-require
   const element = React.createElement(component.default || component, props || {});
 
   return element;
