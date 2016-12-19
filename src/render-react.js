@@ -16,6 +16,11 @@ function createElement(filePath, props) {
     throw new Error('Expected filePath to be a string');
   }
 
+  // clear the require cache if we have already imported the file (if we are watching it)
+  if (require.cache[filePath]) {
+    delete require.cache[filePath];
+  }
+
   const component = require(filePath); // eslint-disable-line global-require, import/no-dynamic-require
   const element = React.createElement(component.default || component, props || {});
 
