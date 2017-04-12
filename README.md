@@ -4,6 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/abramz/gulp-render-react/badges/gpa.svg)](https://codeclimate.com/github/abramz/gulp-render-react)
 [![Test Coverage](https://codeclimate.com/github/abramz/gulp-render-react/badges/coverage.svg)](https://codeclimate.com/github/abramz/gulp-render-react/coverage)
 
+### NO LONGER MAINTAINED
+
 # [gulp](http://gulpjs.com)-render-react 
 > Render React components to string or static markup
 
